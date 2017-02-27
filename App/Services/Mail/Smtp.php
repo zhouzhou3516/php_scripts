@@ -17,6 +17,7 @@ class Smtp extends Base
     public function __construct()
     {
         $this->config = $this->getConfig();
+        var_dump($this->config);
         $mail = new PHPMailer;
         //$mail->SMTPDebug = 3;                               // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -24,7 +25,10 @@ class Smtp extends Base
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = $this->config['username'];                 // SMTP username
         $mail->Password = $this->config['passsword'];                    // SMTP password
-        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        //$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        if(Config::get('smtp_ssl') == 'true'){
+            $mail->SMTPSecure = (Config::get('smtp_port') =='587'?'tls':'ssl');
+        }
         $mail->Port = $this->config['port'];                                    // TCP port to connect to
         $mail->setFrom($this->config['sender'], $this->config['name']);
         $mail->CharSet = 'UTF-8';

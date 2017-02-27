@@ -73,10 +73,10 @@ class Mail
 
     public static function sendSMTP($to, $subject, $body)
     {
-        $text = $body;
-        Logger::debug($text);
+        print($body);
+        Logger::error($body);
         $smtp = new Smtp();
-        $flag =  $smtp->send($to, $subject, $text, []);
+        $flag =  $smtp->send($to, $subject, $body, []);
         return $flag;
     }
 }

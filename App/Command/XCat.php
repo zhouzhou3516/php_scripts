@@ -29,7 +29,7 @@ class XCat
         switch ($this->argv[1]) {
             case("install"):
                 return $this->install();
-            case("createAdmin"):
+            case("zzfggcx"):
                 return $this->zzfggcx();
             default:
                 return $this->defaultAction();
@@ -47,9 +47,9 @@ class XCat
 
     public function zzfggcx()
     {
-        $zzf  = new Zzf();
-        $ret = $zzf->zzfggcx();
-        print(ret);
+        $ret = Zzf::zzfggcx();
+        Mail::sendSMTP('735338750@qq.com','自住房公告更新了',$ret);
+        echo 'sent email';
     }
 
 }

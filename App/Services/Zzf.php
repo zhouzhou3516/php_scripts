@@ -1,4 +1,7 @@
 <?php
+namespace App\Services;
+
+use DOMDocument;
 /**
  * Created by PhpStorm.
  * User: qingzhli
@@ -6,9 +9,9 @@
  * Time: 11:39 PM
  */
 
-Class Zzf
+class Zzf
 {
-    public function zzfggcx()
+    public static function zzfggcx()
     {
         $base_url='http://www.bjjs.gov.cn';
         $tzgx_list_url='http://www.bjjs.gov.cn/bjjs/fwgl/zzxspzf/tzgg/index.shtml';
@@ -25,11 +28,8 @@ Class Zzf
                     if($key==0 ){
                         $firstNode = $i;
                     }
-                    //if($i -> nodeValue == date("Y-m-d")){
-                    if($i -> nodeValue == '2017-02-22'){
-                        //$ret = $ret . $firstNode->ownerDocument->saveXML($item).PHP_EOL;
-                        $res_string = $res_string . $base_url.$firstNode->getAttributeNode('href')->value.PHP_EOL;
-                        //print($firstNode->ownerDocument->saveXML($item) . PHP_EOL);
+                    if($i -> nodeValue == date("Y-m-d")){
+                        $res_string = $res_string . $base_url.$firstNode->getAttributeNode('href')->value.PHP_EOL.'<br>';
                     }
 
                 }
