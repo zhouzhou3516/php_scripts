@@ -17,7 +17,7 @@ class Smtp extends Base
     public function __construct()
     {
         $this->config = $this->getConfig();
-        var_dump($this->config);
+        //var_dump($this->config);
         $mail = new PHPMailer;
         //$mail->SMTPDebug = 3;                               // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
